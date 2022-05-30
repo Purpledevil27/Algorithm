@@ -1,4 +1,4 @@
-// Finding Minimum Spanning Tree  || Time Complexity - O(ElogE + EV)
+// Finding Minimum Spanning Tree  || Time Complexity - O(ElogE + V^2)
 #include <iostream>
 #include <algorithm>
 using namespace std;
