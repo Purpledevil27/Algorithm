@@ -9,12 +9,12 @@ public:
     vector<int> assignColors(vector<vector<int>> &adj, int v)
     {
         // Initializing all the vertex as unassigned
-        vector<int> ans(v, -1);
+        vector<int> vertex_color(v, -1);
 
         // Assign the first color to first vertex
-        ans[0] = 0;
+        vertex_color[0] = 0;
 
-        vector<bool> available(v, false);
+        vector<bool> available_color(v, false);
 
         // Assign colors to remaining V-1 vertices
         for (int i = 1; i < v; i++)
@@ -22,9 +22,9 @@ public:
             // Process all adjacent vertices and flag their colors as unavailable
             for (auto u : adj[i])
             {
-                if (ans[u] != -1)
+                if (vertex_color[u] != -1)
                 {
-                    available[ans[u]] = true;
+                    available_color[vertex_color[u]] = true;
                 }
             }
 
@@ -32,7 +32,7 @@ public:
             int color;
             for (int i = 0; i < v; i++)
             {
-                if (!available[i])
+                if (!available_color[i])
                 {
                     color = i;
                     break;
@@ -40,18 +40,18 @@ public:
             }
 
             // Assign the found color
-            ans[i] = color;
+            vertex_color[i] = color;
 
             // Reset the values back to false for the next iteration
             for (auto u : adj[i])
             {
-                if (ans[u] != -1)
+                if (vertex_color[u] != -1)
                 {
-                    available[ans[u]] = false;
+                    available_color[vertex_color[u]] = false;
                 }
             }
         }
-        return ans;
+        return vertex_color;
     }
 };
 
@@ -73,8 +73,8 @@ int main()
     }
 
     Coloring obj;
-    vector<int> ans = obj.assignColors(adj, V);
-    for (auto i : ans)
+    vector<int> vertex_color = obj.assignColors(adj, V);
+    for (auto i : vertex_color)
     {
         cout << i << " ";
     }
