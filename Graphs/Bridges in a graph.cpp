@@ -1,9 +1,11 @@
 // https://www.geeksforgeeks.org/bridge-in-a-graph/
 
 /*
-An edge in an undirected connected graph is a bridge if removing it disconnects the graph. For a disconnected undirected graph, definition is similar, a bridge is an edge removing which increases number of disconnected components.
+An edge in an undirected connected graph is a bridge if removing it disconnects the graph.
+For a disconnected undirected graph, definition is similar, a bridge is an edge removing which increases number of disconnected components.
 
-Like Bridges, bridges represent vulnerabilities in a connected network and are useful for designing reliable networks. For example, in a wired computer network, an articulation point indicates the critical computers and a bridge indicates the critical wires or connections.
+Like Bridges, bridges represent vulnerabilities in a connected network and are useful for designing reliable networks.
+For example, in a wired computer network, an articulation point indicates the critical computers and a bridge indicates the critical wires or connections.
 
 The condition for an edge (u, v) to be a bridge is, “low[v] > disc[u]”.
 */
@@ -21,7 +23,7 @@ void find(vector<int> adj[], int u, vector<int> &low, vector<int> &disc, int &ti
     {
         if (disc[v] == -1)
         {
-            // If v is not visited yet, then make it a child of u in DFS tree and recur for it
+            // If v is not visited yet, recur for it
             find(adj, v, low, disc, time, u);
 
             // Check if the subtree rooted with v has a connection to one of the ancestors of u
@@ -44,7 +46,6 @@ void bridges(vector<int> adj[], int v)
     vector<int> low(v, INT_MAX), disc(v, -1);
     int time = 0, parent = -1;
 
-    // Adding this loop so that the code works even if we are given disconnected graph
     for (int i = 0; i < v; i++)
     {
         if (disc[i] == -1)
