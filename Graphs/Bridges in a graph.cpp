@@ -1,4 +1,5 @@
 // https://www.geeksforgeeks.org/bridge-in-a-graph/
+// Time Complexity - O(V+E)
 
 /*
 An edge in an undirected connected graph is a bridge if removing it disconnects the graph.
