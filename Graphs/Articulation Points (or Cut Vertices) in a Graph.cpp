@@ -7,6 +7,20 @@ Articulation points represent vulnerabilities in a connected network – single 
 They are useful for designing reliable networks.
 
 For a disconnected undirected graph, an articulation point is a vertex removing which increases number of connected components.
+
+Disc: This is the time when a node is visited 1st time while DFS traversal. For nodes A, B, C, .., and J in the DFS tree, Disc values are 1, 2, 3, .., 10.
+
+Low: In the DFS tree, Tree edges take us forward, from the ancestor node to one of its descendants. For example, from node C, tree edges can take us to node G, node I, etc.
+Back edges take us backward, from a descendant node to one of its ancestors.
+
+“Low” value of a node tells the topmost reachable ancestor (with minimum possible Disc value) via the subtree of that node. So for any node, a Low value is equal to its Disc value anyway (A node is the ancestor of itself).
+
+Low value of u can change it in two cases:
+
+-> Case1 (Tree Edge): If node v is not visited already, then after the DFS of v is complete, a minimum of low[u] and low[v] will be updated to low[u].
+    low[u] = min(low[u], low[v]);
+-> Case 2 (Back Edge): When child v is already visited, then a minimum of low[u] and Disc[v] will be updated to low[u].
+    low[u] = min(low[u], disc[v]);
 */
 
 #include <bits/stdc++.h>
