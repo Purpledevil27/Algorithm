@@ -14,9 +14,16 @@ using namespace std;
 
 void find(vector<int> adj[], int u, vector<bool> &visited, vector<bool> &isAP, vector<int> &low, vector<int> &disc, int &time, int parent)
 {
+    // Mark the current node as visited
     visited[u] = true;
+
+    // Initialize discovery time and low value
     disc[u] = low[u] = ++time;
+
+    // Count of children in DFS Tree
     int children = 0;
+
+    // Go through all the adjacent vertices of u
     for (auto v : adj[u])
     {
         if (!visited[v])
@@ -51,6 +58,7 @@ void articulation_points(vector<int> adj[], int v)
     vector<int> low(v, INT_MAX), disc(v, 0);
     int time = 0, parent = -1;
 
+    // Adding this loop so that the code works even if we are given disconnected graph
     for (int i = 0; i < v; i++)
     {
         if (!visited[i])
@@ -59,6 +67,7 @@ void articulation_points(vector<int> adj[], int v)
         }
     }
 
+    // Print all the articulation points
     for (int i = 0; i < v; i++)
     {
         if (isAP[i])
@@ -66,6 +75,8 @@ void articulation_points(vector<int> adj[], int v)
     }
     cout << endl;
 }
+
+// Function to add edges
 void addEdge(vector<int> adj[], int u, int v)
 {
     adj[u].push_back(v);
