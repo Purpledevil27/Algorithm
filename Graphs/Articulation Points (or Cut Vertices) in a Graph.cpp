@@ -8,10 +8,9 @@ They are useful for designing reliable networks.
 
 For a disconnected undirected graph, an articulation point is a vertex removing which increases number of connected components.
 
-Disc: This is the time when a node is visited 1st time while DFS traversal. For nodes A, B, C, .., and J in the DFS tree, Disc values are 1, 2, 3, .., 10.
+Disc: This is the time when a node is visited 1st time while DFS traversal.
 
-Low: In the DFS tree, Tree edges take us forward, from the ancestor node to one of its descendants. For example, from node C, tree edges can take us to node G, node I, etc.
-Back edges take us backward, from a descendant node to one of its ancestors.
+Low: In the DFS tree, Tree edges take us forward, from the ancestor node to one of its descendants. Back edges take us backward, from a descendant node to one of its ancestors.
 
 “Low” value of a node tells the topmost reachable ancestor (with minimum possible Disc value) via the subtree of that node. So for any node, a Low value is equal to its Disc value anyway (A node is the ancestor of itself).
 
