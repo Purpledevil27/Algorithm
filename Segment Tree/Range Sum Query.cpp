@@ -73,7 +73,7 @@ private:
         }
         int mid = (low + high) / 2;
         update(2 * pos + 1, val, qlow, qhigh, low, mid);
-        update(2 * pos + 2, val, qlow, qhigh, mid, high);
+        update(2 * pos + 2, val, qlow, qhigh, mid+1, high);
         segTree[pos] = segTree[2 * pos + 1] + segTree[2 * pos + 2];
     }
 
