@@ -1,3 +1,62 @@
+// Finding Minimum Spanning Tree || Time Complexity - O(VlogV)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void prim(vector<vector<pair<int, int>>> &adj, int const &n)
+{
+    vector<int> weight(n, INT_MAX);
+    vector<int> parent(n, -1);
+    vector<bool> visited(n, false);
+    parent[0] = -1;
+    visited[0] = true;
+    weight[0] = 0;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({0, 0});
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        int minVertex = pq.top().second;
+        pq.pop();
+        visited[minVertex] = true;
+
+        for (auto &it : adj[minVertex])
+        {
+            int v = it.first, w = it.second;
+            if (!visited[it.first] && weight[v] > w)
+            {
+                weight[v] = w;
+                pq.push({w, v});
+                parent[v] = minVertex;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Edge: " << parent[i] << " " << i << endl;
+    }
+}
+
+int main()
+{
+    int v, e;
+    cin >> v >> e;
+
+    vector<vector<pair<int, int>>> adj(v);
+
+    for (int i = 0; i < e; i++)
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w});
+    }
+
+    prim(adj, v);
+
+    return 0;
+}
+
 // Finding Minimum Spanning Tree || Time Complexity - O(V^2)
 
 #include <bits/stdc++.h>
